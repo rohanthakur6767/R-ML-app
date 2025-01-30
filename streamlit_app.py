@@ -33,7 +33,7 @@ if st.button("Click to Reveal the Surprise 💌"):
 st.subheader("📸 Some Beautiful Memories 📸")
 
 # List of image paths (Update with your actual image file paths)
-image_paths = ["R-ML-app/IMG_20240915_174832.jpg", "images/photo2.jpg", "images/photo3.jpg"]
+image_paths = ["R-ML-app/IMG_20240915_174832.jpg"]
 
 for img in image_paths:
     st.image(img, use_column_width=True, caption="A precious moment! 💖")
