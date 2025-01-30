@@ -1,43 +1,41 @@
 import streamlit as st
 import time
 
-# Set page config
-st.set_page_config(page_title="Happy Birthday 🎂", layout="centered")
+# App title
+st.set_page_config(page_title="Happy Birthday 🎉", layout="centered")
 
-# Title
-st.title("🎉 Happy Birthday, [Her Name]! 🎈")
+# Header
+st.title("🎂 Happy Birthday, [Her Name]! 🎈")
 
-# Display a special message
+# Display a cute message
 st.subheader("💖 A Special Message Just for You 💖")
 
-# Birthday Message
+# Animated message reveal
 message = """  
 Dear [Her Name],  
 
-🎂 Another year older, wiser, and more amazing!  
-You light up the world with your kindness, laughter, and warmth.  
-May this year bring you endless happiness, love, and success.  
+On this special day, I just want to remind you how amazing you are!  
+You bring so much joy, laughter, and love into everyone's life.  
+Wishing you all the happiness in the world today and always! 🎉💖  
 
-Have the best birthday ever! 🎈🎁🎊  
-
-With lots of love,  
+With love,  
 [Your Name]  
 """
 
-if st.button("Click to Reveal the Surprise 💌"):
+if st.button("Click to Reveal the Message 💌"):
     with st.spinner("Unwrapping the surprise... 🎁"):
-        time.sleep(2)  # Simulating delay for suspense
+        time.sleep(2)  # Simulate a delay
     st.write(message)
 
-# Display Preloaded Photos
-st.subheader("📸 Some Beautiful Memories 📸")
+# Upload and display photos
+st.subheader("📸 Beautiful Memories Together 📸")
+uploaded_files = st.file_uploader("Upload photos to make this moment more special!", accept_multiple_files=True, type=["png", "jpg", "jpeg"])
 
-# List of image paths (Update with your actual image file paths)
-image_paths = ["images/photo2.jpg", "images/photo3.jpg"]
+if uploaded_files:
+    for file in uploaded_files:
+        st.image(file, use_column_width=True, caption="A precious memory! 💖")
 
-for img in image_paths:
-    st.image(img, use_column_width=True, caption="A precious moment! 💖")
-
-# Add celebration animation
+# Confetti for celebration
 st.balloons()
-st.success("Hope this made your day special! 😊🎉")
+st.success("Hope this made you smile! 😊💖")
+
