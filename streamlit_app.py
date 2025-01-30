@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+import os
 
 # Set page config
 st.set_page_config(page_title="Happy Birthday 🎂", layout="centered")
@@ -26,17 +27,20 @@ With lots of love,
 
 if st.button("Click to Reveal the Surprise 💌"):
     with st.spinner("Unwrapping the surprise... 🎁"):
-        time.sleep(2)  # Simulating delay for suspense
+        time.sleep(2)
     st.write(message)
 
 # Display Preloaded Photos
 st.subheader("📸 Some Beautiful Memories 📸")
 
-# List of image paths (Update with your actual image file paths)
-image_paths = ["R-ML-app/IMG_20240915_174832.jpg"]
+# Ensure the image paths are correct
+image_paths = ["images/photo1.jpg", "images/photo2.jpg", "images/photo3.jpg"]
 
 for img in image_paths:
-    st.image(img, use_column_width=True, caption="A precious moment! 💖")
+    if os.path.exists(img):  # Check if file exists
+        st.image(img, use_container_width=True, caption="A precious moment! 💖")
+    else:
+        st.error(f"Image not found: {img}. Check the file path.")
 
 # Add celebration animation
 st.balloons()
