@@ -34,7 +34,7 @@ if st.button("Click to Reveal the Surprise 💌"):
 st.subheader("📸 Some Beautiful Memories 📸")
 
 # Ensure the image paths are correct
-image_paths = ["images/photo1.jpg", "images/photo2.jpg", "images/photo3.jpg"]
+image_paths = ["IMG_20240915_174832.jpg"]
 
 for img in image_paths:
     if os.path.exists(img):  # Check if file exists
