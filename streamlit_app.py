@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import os
+from PIL import Image
 
 # Set page config
 st.set_page_config(page_title="Happy Birthday 🎂", layout="centered")
@@ -30,18 +31,26 @@ if st.button("Click to Reveal the Surprise 💌"):
         time.sleep(2)
     st.write(message)
 
+# Function to resize images into a square (300x300)
+def resize_to_square(image_path, size=300):
+    img = Image.open(image_path)
+    img = img.resize((size, size), Image.LANCZOS)
+    return img
+
 # Display Preloaded Photos
 st.subheader("📸 Some Beautiful Memories 📸")
 
-# Ensure the image paths are correct
-image_paths = ["IMG_20240915_174832.jpg"]
+# List of image paths
+image_paths = ["images/photo1.jpg", "images/photo2.jpg", "images/photo3.jpg"]
 
-for img in image_paths:
-    if os.path.exists(img):  # Check if file exists
-        st.image(img, use_container_width=True, caption="A precious moment! 💖")
+# Display resized images
+for img_path in image_paths:
+    if os.path.exists(img_path):
+        resized_img = resize_to_square(img_path)
+        st.image(resized_img, caption="A precious moment! 💖")
     else:
-        st.error(f"Image not found: {img}. Check the file path.")
+        st.error(f"Image not found: {img_path}. Check the file path.")
 
-# Add celebration animation
+# Celebration animation
 st.balloons()
 st.success("Hope this made your day special! 😊🎉")
