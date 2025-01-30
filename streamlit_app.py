@@ -12,7 +12,7 @@ st.subheader("💖 A Special Message Just for You 💖")
 
 # Animated message reveal
 message = """  
-Dear [Her Name],  
+Dear gauri,  
 
 On this special day, I just want to remind you how amazing you are!  
 You bring so much joy, laughter, and love into everyone's life.  
