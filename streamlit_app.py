@@ -1,56 +1,34 @@
 import streamlit as st
-import time
-import os
-from PIL import Image
+import trimesh
+import plotly.graph_objects as go
 
-# Set page config
-st.set_page_config(page_title="Happy Birthday 🎂", layout="centered")
+# Set Streamlit app title
+st.title("🧸 3D Teddy Bear Viewer")
 
-# Title
-st.title("🎉 Happy Birthday, [Her Name]! 🎈")
+# Upload 3D model file
+uploaded_file = st.file_uploader("Upload a 3D model (STL or OBJ)", type=["stl", "obj"])
 
-# Display a special message
-st.subheader("💖 A Special Message Just for You 💖")
+if uploaded_file is not None:
+    try:
+        # Load the 3D model
+        mesh = trimesh.load_mesh(uploaded_file)
 
-# Birthday Message
-message = """  
-Dear [Her Name],  
+        # Convert the model to Plotly format
+        fig = go.Figure(data=[go.Mesh3d(
+            x=mesh.vertices[:, 0],
+            y=mesh.vertices[:, 1],
+            z=mesh.vertices[:, 2],
+            i=mesh.faces[:, 0],
+            j=mesh.faces[:, 1],
+            k=mesh.faces[:, 2],
+            color='brown',
+            opacity=0.9
+        )])
 
-🎂 Another year older, wiser, and more amazing!  
-You light up the world with your kindness, laughter, and warmth.  
-May this year bring you endless happiness, love, and success.  
+        # Display the 3D model
+        st.plotly_chart(fig)
 
-Have the best birthday ever! 🎈🎁🎊  
-
-With lots of love,  
-[Your Name]  
-"""
-
-if st.button("Click to Reveal the Surprise 💌"):
-    with st.spinner("Unwrapping the surprise... 🎁"):
-        time.sleep(2)
-    st.write(message)
-
-# Function to resize images into a square (300x300)
-def resize_to_square(image_path, size=300):
-    img = Image.open(image_path)
-    img = img.resize((size, size), Image.LANCZOS)
-    return img
-
-# Display Preloaded Photos
-st.subheader("📸 Some Beautiful Memories 📸")
-
-# List of image paths
-image_paths = ["IMG_20240915_174832.jpg"]
-
-# Display resized images
-for img_path in image_paths:
-    if os.path.exists(img_path):
-        resized_img = resize_to_square(img_path)
-        st.image(resized_img, caption="A precious moment! 💖")
-    else:
-        st.error(f"Image not found: {img_path}. Check the file path.")
-
-# Celebration animation
-st.balloons()
-st.success("Hope this made your day special! 😊🎉")
+    except Exception as e:
+        st.error(f"Error loading 3D model: {e}")
+else:
+    st.info("Upload a 3D model file to view it here.")
