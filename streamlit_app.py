@@ -41,7 +41,7 @@ def resize_to_square(image_path, size=300):
 st.subheader("📸 Some Beautiful Memories 📸")
 
 # List of image paths
-image_paths = ["images/photo1.jpg", "images/photo2.jpg", "images/photo3.jpg"]
+image_paths = ["D:\videos\WhatsApp Image 2025-03-19 at 21.51.27_3e96a7e9.jpg", "images/photo2.jpg", "images/photo3.jpg"]
 
 # Display resized images
 for img_path in image_paths:
