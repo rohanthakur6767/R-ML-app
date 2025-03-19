@@ -7,7 +7,7 @@ from PIL import Image
 st.set_page_config(page_title="Happy Birthday 🎂", layout="centered")
 
 # Title
-st.title("🎉 Happy Birthday, [Her Name]! 🎈")
+st.title("🎉 Happy Birthday, Anshikaa.. 🎈")
 
 # Display a special message
 st.subheader("💖 A Special Message Just for You 💖")
