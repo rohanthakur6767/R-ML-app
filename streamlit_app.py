@@ -14,17 +14,20 @@ st.subheader("💖 A Special Message Just for You 💖")
 
 # Birthday Message
 message = """  
-Dear [Her Name],  
+My love Anshikaa,  
 
-🎂 Another year older, wiser, and more amazing!  
-You light up the world with your kindness, laughter, and warmth.  
-May this year bring you endless happiness, love, and success.  
+happy birthday to my love of my life...
+
+Meri jaan, tumse milne ka intezaar ab aur nahi ho raha! 💖 
+Tumhari hasi meri duniya roshan karti hai, aur tumhari baatein mere dil ka sukoon hain.
+tum mere liye bhot special ho i love you soo much my love 🌸✨  
+
+i promise i will keep loving youu darling..
 
 Have the best birthday ever! 🎈🎁🎊  
 
 With lots of love,  
-[Your Name]  
-"""
+your Rohan Thakur
 
 if st.button("Click to Reveal the Surprise 💌"):
     with st.spinner("Unwrapping the surprise... 🎁"):
@@ -38,7 +41,7 @@ def resize_to_square(image_path, size=300):
     return img
 
 # Display Preloaded Photos
-st.subheader("📸 Some Beautiful Memories 📸")
+st.subheader("📸 Some Beautiful Pictures 📸")
 
 # List of image paths
 image_paths = ["2.jpg", "3.jpg", "4.jpg"]
@@ -47,7 +50,7 @@ image_paths = ["2.jpg", "3.jpg", "4.jpg"]
 for img_path in image_paths:
     if os.path.exists(img_path):
         resized_img = resize_to_square(img_path)
-        st.image(resized_img, caption="A precious moment! 💖")
+        st.image(resized_img, caption="My beautifull girl 💖")
     else:
         st.error(f"Image not found: {img_path}. Check the file path.")
 
